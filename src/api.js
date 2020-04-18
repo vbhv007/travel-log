@@ -6,5 +6,5 @@ export async function listAllLogs() {
         method: "POST",
         body: JSON.stringify({}),
     });
-    return response.json()
+    return response.json();
 }
