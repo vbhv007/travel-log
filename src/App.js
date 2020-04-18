@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 import { listAllLogs } from './api';
+import LogEntryForm from './logEntryForm';
+
 
 const App = () => {
     const [logs, setLogs] = useState([]);
@@ -14,6 +16,12 @@ const App = () => {
         longitude:  78.9629,
         zoom:   4
     });
+
+    const getLogs = async () => {
+        const logs = await listAllLogs();
+        setLogs(logs["logs"]);
+    };
+
 
     useEffect(() => {
         (async () => {
@@ -123,7 +131,10 @@ const App = () => {
                             anchor="top"
                         >
                             <div className="popup">
-                                <h3>Add a new entry!</h3>
+                                <LogEntryForm onClose={() => {
+                                    setEntryLog(null);
+                                    getLogs()
+                                }} location={entryLog} />
                             </div>
                         </Popup>
                     </React.Fragment>

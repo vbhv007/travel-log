@@ -8,3 +8,18 @@ export async function listAllLogs() {
     });
     return response.json();
 }
+
+export async function addLog(entry) {
+    const response = await fetch(API_URL + "/addLog", {
+        method: 'POST',
+        body: JSON.stringify(entry),
+    });
+    let json;
+    json = await response.json();
+    if (response.ok) {
+        return json;
+    }
+    const error = new Error(json.message);
+    error.response = json;
+    throw error;
+}
