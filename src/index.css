@@ -5,4 +5,21 @@ body {
     sans-serif;
   width:  100vw;
   height: 100vh;
+  overflow: hidden;
+}
+
+.marker {
+  transform: translate(-50%, -100%);
+}
+
+.popup{
+  max-width: 300px;
+}
+
+.marker.red path {
+  fill: #f05305;
+}
+
+.marker.yellow path {
+  fill: #F3B73E;
 }
