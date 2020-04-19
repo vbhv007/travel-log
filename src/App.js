@@ -4,6 +4,7 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { listAllLogs } from './api';
 import LogEntryForm from './logEntryForm';
 
+let STAR = '⭐';
 
 const App = () => {
     const [logs, setLogs] = useState([]);
@@ -87,7 +88,7 @@ const App = () => {
                                     anchor="top"
                                 >
                                     <div className="popup">
-                                        <h3>{log.title}</h3>
+                                        <h3>{log.title} {STAR.repeat(log.rating)} </h3>
                                         <p>{log.description}</p>
                                         <small>Visited on: {new Date(log.created_at).toLocaleDateString()}</small>
                                     </div>
@@ -127,7 +128,7 @@ const App = () => {
                             closeButton={true}
                             closeOnClick={false}
                             dynamicPosition={true}
-                            onClose={() => setPopup({})}
+                            onClose={() => setEntryLog(null)}
                             anchor="top"
                         >
                             <div className="popup">
