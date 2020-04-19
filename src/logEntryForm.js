@@ -32,8 +32,6 @@ const LogEntryForm = ({ location, onClose }) => {
             <textarea name="description" rows={3} ref={register}/>
             <label htmlFor="rating">Rating</label>
             <input name="rating" required ref={register}/>
-            <label htmlFor="image">Image</label>
-            <input name="image" ref={register} />
             <button disabled={loading}>{loading ? 'Loading...' : 'Create Entry'}</button>
         </form>
     );
